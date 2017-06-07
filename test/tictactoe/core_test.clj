@@ -33,9 +33,11 @@
     (let [winning-board [[nil nil nil] [:o :o :o] [nil nil nil]]]
       (is (= (check-board winning-board) :o))))
 
-  (testing "check board also checks vertical and diagonal winners"
+  (testing "check board also checks vertical"
     (let [winning-board [[:x nil nil] [:x nil nil] [:x nil nil]]]
-      (is (= (check-board winning-board) :x)))
+      (is (= (check-board winning-board) :x))))
 
+  (testing "check board also checks diagonals"
     (let [winning-board [[:o nil nil] [nil :o nil] [nil nil :o]]]
       (is (= (check-board winning-board) :o)))))
+
