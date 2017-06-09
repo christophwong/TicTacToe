@@ -4,6 +4,9 @@
 (defn new-board []
   [[nil nil nil] [nil nil nil] [nil nil nil]])
 
+(defn prompt-for-move []
+ (println  "Please input number of box you wish to mark:"))
+
 (defn get-columns [board]
   (apply mapv vector board))
 

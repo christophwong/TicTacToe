@@ -41,3 +41,6 @@
     (let [winning-board [[:o nil nil] [nil :o nil] [nil nil :o]]]
       (is (= (check-board winning-board) :o)))))
 
+(deftest terminal-interface-test
+  (testing "prompt asks which square you wish to place move in"
+   (is (=  (with-out-str (prompt-for-move)) "Please input number of box you wish to mark:\n"))))
