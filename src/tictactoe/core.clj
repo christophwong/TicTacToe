@@ -1,11 +1,11 @@
 (ns tictactoe.core
   (:gen-class))
 
-(defn new-board []
-  [[nil nil nil] [nil nil nil] [nil nil nil]])
+(defn build-board [li]
+  (partition 3 li))
 
-(defn prompt-for-move []
- (println  "Please input number of box you wish to mark:"))
+(defn new-board []
+  (build-board (repeat 9 nil)))
 
 (defn get-columns [board]
   (apply mapv vector board))
@@ -30,9 +30,24 @@
     (check-row (get-columns board))
     (check-row (get-diagonals board))))
 
+(defn prompt-for-move []
+ (println  "Please input number of box you wish to mark:")
+ ;takes input and returns formatted input
+ (let [input (read-line)]
+   input))
+
+(defn place-mark [board mark position]
+  (build-board (assoc (vec (flatten (new-board))) position mark)))
+
+(defn print-board [board]
+  (doseq [row board]
+    (println row)))
+
+(defn start-game []
+  (print-board (new-board))
+  (prompt-for-move))
 
 (defn -main
-  "I don't do a whole lot ... yet."
   [& args]
-  (println "Hello, World!"))
+  (start-game))
 
